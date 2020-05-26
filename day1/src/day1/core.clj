@@ -15,4 +15,7 @@
 
 (defn final-freq
   [input]
-  (reduce + (as-numbers (split-input input))))
+  (->> input
+    (split-input)
+    (as-numbers)
+    (reduce +)))
