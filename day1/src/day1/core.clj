@@ -3,11 +3,18 @@
 
 (defn split-input
   [input]
-  (into [] (map str/trim (str/split input #","))))
+  (into [] (map str/trim (str/split input #"\n"))))
 
-(defn final-freq
+(defn calculate-freq
   [input]
   (->> input
     (split-input)
     (map #(Integer/parseInt %))
     (reduce +)))
+
+(defn -main
+  [& args]
+  (->> args
+      (first)
+      (slurp)
+      (calculate-freq)))
